@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+//import apiClient from "../../services/apiClient"
 import axios from "axios"
 import "./Login.css"
 
@@ -35,6 +36,19 @@ export default function Login({ user, setUser }) {
   const handleOnSubmit = async () => {
     setIsProcessing(true)
     setErrors((e) => ({ ...e, form: null }))
+
+    // const { data, error } = await apiClient.login({ email:form.email, password: form.password});
+
+    // if (error) {
+    //   setErrors((e) => ({ ...e, form:error }));
+    // }
+
+    // if (data?.user) {
+    //   setUser(data.user);
+    //   apiClient.setToken(data.token);
+    // }
+
+    // setIsProcessing(false);
 
     try {
       const res = await axios.post("http://localhost:3001/auth/login", form)
